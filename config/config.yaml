@@ -1,0 +1,8 @@
+artifacts_root: artifacts
+
+data_ingestion: 
+  root_dir: artifacts/data_ingestion
+  data_path: artifacts/data_ingestion/customer_seg.csv
+  mongodb_url: mongodb+srv://datascience:datascience@cluster0.4vt0cq9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+  DATABASE_NAME: Intership
+  COLLECTION_NAME: customer_segmentation
