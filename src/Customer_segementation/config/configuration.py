@@ -1,6 +1,7 @@
 from src.Customer_segementation.constant import *
 from src.Customer_segementation.entity.config_entity import (DataIngestionConfig,
-                                                             DataValidationConfig)
+                                                             DataValidationConfig,
+                                                             DataTransformationConfig)
 from src.Customer_segementation.utils.common import read_yaml, create_directories
 
 
@@ -40,4 +41,20 @@ class configurationManager:
             all_schema=schema
             )
         return data_validation_config
-        
+    def get_data_transformation_config(self)->DataTransformationConfig:
+       config=self.config.data_transformation
+       parmas=self.params.data_transformation
+       create_directories([config.root_dir])
+
+       get_transformation_config=DataTransformationConfig(
+           root_dir=config.root_dir,
+           data_dir=config.data_dir,
+           train_data__scaled_path=config.train_data_scaled_path,
+           test_data_scaled_path=config.test_data_scaled_path,
+           test_size=parmas.test_size,
+           random_state=parmas.random_state,
+           train_data_path=config.train_data_path,
+           test_data_path=config.test_data_path
+           
+           )
+       return get_transformation_config

@@ -15,3 +15,15 @@ class DataValidationConfig:
     data_dir: Path
     status_file: Path
     all_schema: dict
+
+@dataclass(frozen=True)
+class DataTransformationConfig: 
+    root_dir: Path
+    data_dir: Path
+    train_data__scaled_path: Path
+    test_data_scaled_path: Path
+    test_size: int
+    random_state: int
+    train_data_path: Path
+    test_data_path: Path
+    
