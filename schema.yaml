@@ -1,0 +1,14 @@
+COLUMNS: 
+  ID: int64
+  Gender: object
+  Ever_Married: object
+  Age: int64
+  Graduated : object
+  Profession: object
+  Work_Experience: float64
+  Spending_Score: object
+  Family_Size: float64
+  Var_1: object
+  Segmentation: object
+TARGET: 
+  Segmentation: object
