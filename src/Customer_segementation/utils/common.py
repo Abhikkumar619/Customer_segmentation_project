@@ -4,6 +4,7 @@ from pathlib import Path
 from src.Customer_segementation.logger import logger
 import yaml
 import os
+import pickle
 
 @ensure_annotations
 def read_yaml(yaml_path: Path)->ConfigBox: 
@@ -18,4 +19,14 @@ def create_directories(dir_path: list):
     for path in dir_path: 
         os.makedirs(path, exist_ok=True) 
         logger.info(f"Directories created {dir_path}")
+
+@ensure_annotations
+def save_object(file_path: Path, obj: object):
+    try:
+        with open(file_path, 'wb') as file_path: 
+            pickle.dump(obj, file_path)
+            logger.info(f"Object save at: {file_path}")
+    except Exception as e: 
+        raise e
+
         

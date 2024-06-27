@@ -9,6 +9,8 @@ import pandas as pd
 from src.Customer_segementation.logger import logger
 from src.Customer_segementation.config.configuration import DataTransformationConfig
 from sklearn.model_selection import train_test_split
+from src.Customer_segementation.utils.common import save_object
+from pathlib import Path
 
 class DataTransformation: 
     def __init__(self, config=DataTransformationConfig) -> None:
@@ -89,6 +91,10 @@ class DataTransformation:
         logger.info(f"Numerical data: {numerical_data}")
 
         preprocessing=self.get_data_preprocessing(cat_data=categorical_data, num_data=numerical_data)
+        
+        save_object(file_path=Path(self.config.preprocessor_path), obj=preprocessing)
+
+        logger.info(f"preprocessor save sucessfully")
 
         # logger.info(f"Preprocessing model created: {preprocessing}")
 

@@ -54,7 +54,7 @@ class configurationManager:
            test_size=parmas.test_size,
            random_state=parmas.random_state,
            train_data_path=config.train_data_path,
-           test_data_path=config.test_data_path
-           
-           )
+           test_data_path=config.test_data_path,
+           preprocessor_path=config.preprocessor_path)
+       
        return get_transformation_config

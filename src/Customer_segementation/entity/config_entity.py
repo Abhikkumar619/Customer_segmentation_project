@@ -26,4 +26,5 @@ class DataTransformationConfig:
     random_state: int
     train_data_path: Path
     test_data_path: Path
+    preprocessor_path: Path
     
