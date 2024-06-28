@@ -1,7 +1,8 @@
 from src.Customer_segementation.constant import *
 from src.Customer_segementation.entity.config_entity import (DataIngestionConfig,
                                                              DataValidationConfig,
-                                                             DataTransformationConfig)
+                                                             DataTransformationConfig, 
+                                                             ModelTrainerConfig)
 from src.Customer_segementation.utils.common import read_yaml, create_directories
 
 
@@ -58,3 +59,18 @@ class configurationManager:
            preprocessor_path=config.preprocessor_path)
        
        return get_transformation_config
+    
+    def get_model_trainer_config(self)->ModelTrainerConfig:
+        config=self.config.model_trainer
+        create_directories([config.root_dir])
+        
+        model_Trainer_config=ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data=config.train_data_scaled_path,
+            test_data=config.test_data_scaled_path,
+            best_model_path=config.best_model_path,
+            train_not_scaled=config.train_data_not_scaled,
+            test_not_scaled=config.test_data_not_scaled,
+            dim_red_model=config.dim_red_model_path
+            )
+        return model_Trainer_config

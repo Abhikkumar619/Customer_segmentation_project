@@ -27,4 +27,15 @@ class DataTransformationConfig:
     train_data_path: Path
     test_data_path: Path
     preprocessor_path: Path
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data: Path
+    test_data: Path
+    best_model_path: Path  
+    train_not_scaled: Path
+    test_not_scaled: Path  
+    dim_red_model: Path
     
