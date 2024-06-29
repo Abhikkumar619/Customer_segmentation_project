@@ -10,6 +10,10 @@
 7. Update main.py
 8. Update app.py
 
+## User_InterFace
+
+![Sample Image](https://github.com/Abhikkumar619/Customer_segmentation_project/blob/main/images/Screenshot%202024-06-29%20at%207.15.21%E2%80%AFAM.png)
+
 
 ## How to Run?
 
