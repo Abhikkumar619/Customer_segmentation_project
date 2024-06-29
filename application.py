@@ -2,10 +2,16 @@ from flask import Flask,request, render_template
 from src.Customer_segementation.pipeline.predication_pipe import CustomData,PrediPipeline
 from src.Customer_segementation.logger import logger
 app=Flask(__name__)
+import os
 
 @app.route('/')
 def home_page():
     return render_template("form.html")
+
+
+@app.route("/training")
+def training_model():
+    os.system("python main.py")
 
 
 @app.route("/predict", methods=["GET", "POST"])
