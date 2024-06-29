@@ -28,5 +28,16 @@ def save_object(file_path: Path, obj: object):
             logger.info(f"Object save at: {file_path}")
     except Exception as e: 
         raise e
+    
+@ensure_annotations
+def load_object(file_path:Path): 
+    try: 
+        with open(file_path, 'rb') as file_obj: 
+            model=pickle.load(file_obj)
+            logger.info(f"object load sucessfully from path: {file_path}")
+            return model
+
+    except Exception as e:
+        raise e
 
         
