@@ -2,7 +2,8 @@ from src.Customer_segementation.constant import *
 from src.Customer_segementation.entity.config_entity import (DataIngestionConfig,
                                                              DataValidationConfig,
                                                              DataTransformationConfig, 
-                                                             ModelTrainerConfig)
+                                                             ModelTrainerConfig, 
+                                                             ModelEvaluationConfig)
 from src.Customer_segementation.utils.common import read_yaml, create_directories
 
 
@@ -74,3 +75,14 @@ class configurationManager:
             dim_red_model=config.dim_red_model_path
             )
         return model_Trainer_config
+    
+    def get_model_evaluation_config(self):
+        config=self.config.model_evaluation
+
+        model_evaluation_config=ModelEvaluationConfig(
+            data=config.train_data_scaled,
+            model_path=config.model_path,
+            dim_red_model=config.dim_red_model
+
+        )
+        return model_evaluation_config

@@ -31,6 +31,11 @@ model_trainer:
   best_model_path: artifacts/model_trainer/best_Model.h5
   dim_red_model_path: artifacts/model_trainer/dim_red.h5
 
+model_evaluation: 
+  train_data_scaled: "artifacts/data_transformation/train_scaled.csv"
+  model_path: "artifacts/model_trainer/best_Model.h5"
+  dim_red_model: "artifacts/model_trainer/dim_red.h5"
+  
 
   
    

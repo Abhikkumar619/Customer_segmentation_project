@@ -39,3 +39,8 @@ class ModelTrainerConfig:
     test_not_scaled: Path  
     dim_red_model: Path
     
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    data: Path
+    model_path: Path
+    dim_red_model: Path
