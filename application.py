@@ -9,9 +9,11 @@ def home_page():
     return render_template("form.html")
 
 
-@app.route("/training")
+@app.route("/training", methods=['GET','POST'])
 def training_model():
     os.system("python main.py")
+    # result="Training complected Sucessfully" 
+    return render_template("result.html", final_result="Training complected Sucessfully")
 
 
 @app.route("/predict", methods=["GET", "POST"])

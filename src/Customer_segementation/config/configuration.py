@@ -70,8 +70,6 @@ class configurationManager:
             train_data=config.train_data_scaled_path,
             test_data=config.test_data_scaled_path,
             best_model_path=config.best_model_path,
-            train_not_scaled=config.train_data_not_scaled,
-            test_not_scaled=config.test_data_not_scaled,
             dim_red_model=config.dim_red_model_path
             )
         return model_Trainer_config

@@ -12,7 +12,8 @@ class DataIngestion:
     def import_collection_as_DataFrame(self, database_name: str,
                                         collection_name: str, mongodb_uri: str):
         try: 
-            client=MongoClient(mongodb_uri)
+            client=MongoClient(mongodb_uri,tls=True,
+        tlsAllowInvalidCertificates=True)
 
             collection_name=client[database_name][collection_name]
 

@@ -4,7 +4,9 @@ from src.Customer_segementation.pipeline.stage_3_data_transformation import Data
 from src.Customer_segementation.pipeline.stage_4_model_training import ModelTraningPipeline
 from src.Customer_segementation.logger import logger
 from src.Customer_segementation.pipeline.stage_5_model_evaluation import ModelEvaluationPipeline
-""" 
+
+
+"""
 stage_name="DataIngestion"
 
 if __name__ =="__main__":
@@ -13,6 +15,7 @@ if __name__ =="__main__":
     obj.main()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
+
 stage_name="DataValidation"
 
 if __name__ == "__main__":
@@ -20,7 +23,8 @@ if __name__ == "__main__":
     obj=DataValidationPipeline()
     obj.main()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-"""
+
+
 stage_name= "DataTransformation"
 
 if __name__ == "__main__":
@@ -28,6 +32,7 @@ if __name__ == "__main__":
     obj=DataTransformationPipeline()
     obj.main()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+"""
 
 stage_name="Model_Training"
 
@@ -38,9 +43,10 @@ if __name__ =="__main__":
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
 stage_name="ModelEvaluation"
-
+"""
 if __name__ =="__main__": 
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} started>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     obj=ModelEvaluationPipeline()
     obj.main()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+"""

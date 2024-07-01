@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix, precision_score, accuracy_score, c
 from src.Customer_segementation.utils.common import save_object
 from pathlib import Path
 from src.Customer_segementation.entity.config_entity import ModelTrainerConfig
-
+from sklearn.metrics import silhouette_score
 
 
 class ModelTainer:
@@ -19,81 +19,45 @@ class ModelTainer:
             'kmean': KMeans(n_clusters=4, init='k-means++')
         }
 
-    def model_evaluation(self, x_train, x_test, y_train, y_test, Model):
+    def model_evaluation(self, x_train, x_test, Model):
         report={}
         dim_red=PCA(n_components=2)
         x_train_scaled=dim_red.fit_transform(x_train)
         x_test_scaled=dim_red.transform(x_test)
 
+        save_object(file_path=Path(self.config.dim_red_model), obj=dim_red)
+        
         for mod in range(len(Model)): 
             model= list(Model.values())[mod]
 
             model= model.fit(x_train_scaled)
 
-            y_pred=model.predict(x_test_scaled)
+            logger.info(f"Labels: {model.labels_}")
+            sil_score=silhouette_score(x_train,model.labels_)
 
-            logger.info(f"Y perdication: {y_pred}")
+            logger.info(f"silhouette_score of kmean: {sil_score}")
 
-            score=confusion_matrix(y_test, y_pred)
-            # precision_sc=precision_score(y_test, y_pred, average='weighted')
-
-            acc_score=accuracy_score(y_test, y_pred)
-            # logger.info(f"Accuracy score: {acc_score}")
-
-            class_report=classification_report(y_test, y_pred)
-            # logger.info(f"Classification report\n\n: {class_report}")
-            
-            # mae=mean_absolute_error(x_test, y_pred)
-
-            logger.info(f"Accuracy Score\n\n: {score}")
-            # logger.info(f"precision_score: {precision_score}")
-
-            report[list(Model.keys())[mod]]=acc_score
+           
+            report[list(Model.keys())[mod]]=silhouette_score
             # report[list(Model.keys())[mod]]=score
-        return (report, model, dim_red)
-
-
-
-
-
+        return (report,model)
+        
     def inititate_model_trainer(self):
         train_data=self.config.train_data
-        train_not_scaled=self.config.train_not_scaled
-        test_not_scaled=self.config.test_not_scaled
         test_data=self.config.test_data
 
-        x= pd.read_csv(train_data)
-        x1=pd.read_csv(train_not_scaled)
-        x1['Segmentation']=x1['Segmentation'].map({'A':1, 'B':2, 'C':3, 'D':4})
+        train= pd.read_csv(train_data)
+        test=pd.read_csv(test_data)
 
-        y1=pd.read_csv(test_not_scaled)
-        y1['Segmentation']=y1['Segmentation'].map({'A':1, 'B':2, 'C':3, 'D':4})
 
-        y=pd.read_csv(test_data)
+        # logger.info(f"x_: {train}")
+        # logger.info(f"{test}")
 
-        x_train=x.iloc[:,:-1]
-        y_train=x1.iloc[:,-1]
+        # logger.info(f"Model list :{self.model}")
 
-        x_test=y.iloc[:,:-1]
-        y_test=y1.iloc[:,-1]
-
-        # logger.info(f"x_: {x_test}")
-        # logger.info(f"{y_test}")
-
-        logger.info(f"Model list :{self.model}")
-
-        report, model, dim_red=self.model_evaluation(x_train, x_test, y_train, y_test, self.model)
+        (report,model)=self.model_evaluation(train, test, self.model)
         logger.info(f"Report of model: {report}")
 
         save_object(file_path=Path(self.config.best_model_path), obj=model)
-        save_object(file_path=Path(self.config.dim_red_model), obj=dim_red)
+        # save_object(file_path=Path(self.config.dim_red_model), obj=dim_red)
         
-
-        
-        
-        
-        
-
-
-
-

@@ -35,8 +35,6 @@ class ModelTrainerConfig:
     train_data: Path
     test_data: Path
     best_model_path: Path  
-    train_not_scaled: Path
-    test_not_scaled: Path  
     dim_red_model: Path
     
 @dataclass(frozen=True)
