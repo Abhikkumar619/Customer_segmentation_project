@@ -13,14 +13,14 @@ class DataIngestionPipeline:
             configmanger=configurationManager()
             dataingestion_config=configmanger.get_data_ingestion_config()
             data_ingestion=DataIngestion(dataingestion_config)
-            data_ingestion.import_data_into_feature_store_file_system()
+            # data_ingestion.import_data_into_feature_store_file_system()
         except Exception as e:
             raise e
         
     
 if __name__ =="__main__":
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} started>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    obj=DataIngestionPipeline()
-    obj.main()
+    # obj=DataIngestionPipeline()
+    # obj.main()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 

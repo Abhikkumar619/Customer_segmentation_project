@@ -1,0 +1,48 @@
+stages: 
+  data_ingestion: 
+    cmd: python src/Customer_segementation/pipeline/stage_1_data_ingestion.py
+    deps: 
+      - src/Customer_segementation/pipeline/stage_1_data_ingestion.py
+      - config/config.yaml
+
+    outs: 
+      - artifacts/data_ingestion
+
+  data_validation: 
+    cmd: python src/Customer_segementation/pipeline/stage_2_data_validation.py
+    
+    deps: 
+      - src/Customer_segementation/pipeline/stage_2_data_validation.py
+      - config/config.yaml
+      - schema.yaml
+    
+    outs: 
+    - artifacts/data_validation
+
+  data_transformation: 
+    cmd: python src/Customer_segementation/pipeline/stage_3_data_transformation.py
+
+    deps: 
+      - src/Customer_segementation/pipeline/stage_3_data_transformation.py
+      - config/config.yaml
+      - params.yaml
+
+    outs:
+      - artifacts/data_transformation
+
+  model_training: 
+    cmd: python src/Customer_segementation/pipeline/stage_4_model_training.py
+
+    deps: 
+      - src/Customer_segementation/pipeline/stage_4_model_training.py
+      - config/config.yaml
+
+    outs: 
+      - artifacts/model_trainer
+
+  model_evaluation: 
+    cmd: python src/Customer_segementation/pipeline/stage_5_model_evaluation.py
+
+    deps: 
+       - src/Customer_segementation/pipeline/stage_5_model_evaluation.py
+       

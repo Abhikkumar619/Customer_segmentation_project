@@ -32,7 +32,7 @@ if __name__ == "__main__":
     obj=DataTransformationPipeline()
     obj.main()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-"""
+
 
 stage_name="Model_Training"
 
@@ -43,7 +43,7 @@ if __name__ =="__main__":
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} Completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
 stage_name="ModelEvaluation"
-"""
+
 if __name__ =="__main__": 
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} started>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     obj=ModelEvaluationPipeline()
