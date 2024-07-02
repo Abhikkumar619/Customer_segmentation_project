@@ -34,3 +34,4 @@
 ## Clustering Graph
 ![Sample Image](https://github.com/Abhikkumar619/Customer_segmentation_project/blob/main/images/seg_chat.png)
 
+891377243581.dkr.ecr.us-east-1.amazonaws.com/customer
